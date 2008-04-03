@@ -1,4 +1,4 @@
-package <%= $c->{appname} %>::Util;
+package MyApp::Util;
 
 use strict;
 use warnings;

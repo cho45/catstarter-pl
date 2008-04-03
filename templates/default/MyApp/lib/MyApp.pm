@@ -1,10 +1,10 @@
-package XG;
+package MyApp;
 use strict;
 use warnings;
 
 use Catalyst::Runtime '5.70';
 use Catalyst qw/
-	+<%= $c->{appname} %>::Util
+	+MyApp::Util
 
 	ConfigLoader
 
