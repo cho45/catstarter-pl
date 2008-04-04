@@ -98,7 +98,7 @@ my $dist      = join "-", @$pkg;
 my $path      = join( "/", @$pkg ) . ".pm";
 my $appprefix = Catalyst::Utils::appprefix($module);
 
-copy_templates_to_dist("./templates/default/", "Foo", {
+copy_templates_to_dist("./templates/default/", $dist, {
 	rule => {
 		MyApp => $module,
 		myapp => $appprefix,
