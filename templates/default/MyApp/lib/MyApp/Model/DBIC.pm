@@ -4,8 +4,7 @@ use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
-    schema_class => 'MyApp::Schema',
-    
+	schema_class => 'MyApp::Schema',
 );
 
 =head1 NAME

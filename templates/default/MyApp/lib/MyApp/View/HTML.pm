@@ -4,12 +4,14 @@ use strict;
 use base 'Catalyst::View::MicroMason';
 
 __PACKAGE__->config(
-    # -Filters      : to use |h and |u
-    # -ExecuteCache : to cache template output
-    # -CompileCache : to cache the templates
-    Mixins => [qw( -Filters -CompileCache )], 
+	# -ExecuteCache : to cache template output
+	# -CompileCache : to cache the templates
+	Mixins => [qw(
+		-SafeServerPages
+		-CompileCache
+	)],
 );
-    
+
 =head1 NAME
 
 MyApp::View::HTML - MicroMason View Component
@@ -32,4 +34,4 @@ default behavior.
 
 =cut
 
-1; # magic true value
+1;

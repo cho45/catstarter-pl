@@ -1,2 +1,26 @@
 ---
 name: MyApp
+
+default_view: HTML
+View::HTML:
+  INCLUDE_PATH: __path_to(templates)__
+  TEMPLATE_EXTENSION: .pl.html
+
+Model::DBIC:
+  connect_info:
+    - dbi:mysql:myapp
+    - root
+    - on_connect_do:
+        - SET NAMES utf8
+
+View::JSON:
+  expose_stash: 'json'
+  json_driver: XS
+  no_x_json_header: 1
+
+session:
+  expires: 1000000000000 # forever
+  storage: __path_to(tmp/session)__
+  cookie_name: session
+  cookie_expires: 2629743 # 1 month
+
