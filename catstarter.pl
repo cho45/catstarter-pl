@@ -97,6 +97,8 @@ sub copy_templates_to_dist {
 sub select_templates {
 	my $global = file(__FILE__)->dir->absolute->subdir('templates');
 	my $local  = dir(File::HomeDir->my_home)->subdir('.catstarter', 'templates');
+	say "Global templates: $global";
+	say "Local templates: $local";
 
 	my $templates = [];
 
