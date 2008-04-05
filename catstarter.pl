@@ -7,9 +7,12 @@ use Pod::Usage;
 use Getopt::Long;
 use Perl6::Say;
 
+use ExtUtils::MakeMaker qw(prompt);
+
 use Text::MicroMason;
 use Path::Class qw/dir file/;
 use File::Copy;
+use File::HomeDir;
 use YAML;
 use Data::Dumper;
 sub p ($) { print Dumper shift }
@@ -36,7 +39,7 @@ require Catalyst::View::JSON;
 require Catalyst::Plugin::DebugScreen;
 require JSON::XS;
 
-push @ARGV, "Test";
+# push @ARGV, "Test";
 
 exit unless @ARGV == 1;
 
@@ -91,6 +94,47 @@ sub copy_templates_to_dist {
 	} );
 }
 
+sub select_templates {
+	my $global = file(__FILE__)->dir->absolute->subdir('templates');
+	my $local  = dir(File::HomeDir->my_home)->subdir('.catstarter', 'templates');
+
+	my $templates = [];
+
+	for my $dir ($local, $global) {
+		(-e "$dir") || next;
+
+		for my $f ($dir->children) {
+			next unless $f->is_dir;
+
+			$f = file($f);
+
+			if ($f->basename eq 'default') {
+				push @$templates, file($f);
+			} else {
+				push @$templates, file($f);
+			}
+		}
+	}
+
+	for (1..@$templates) {
+		my $template = $templates->[$_-1];
+		my $dispname = $template->basename;
+		$dispname .= ' (.catstarter)' if $template =~ /\.catstarter/;
+		say sprintf "[%d]: %s", $_, $dispname;
+	}
+	my $selected = prompt('Select:', '1');
+
+	$templates->[$selected-1]->cleanup;
+}
+
+my $template = select_templates();
+if ($template) {
+	say "Selected $template";
+} else {
+	say "No template selected";
+	exit 1;
+}
+
 
 my $module    = shift @ARGV;
 my $pkg       = [ split /::/, $module ];
@@ -98,7 +142,7 @@ my $dist      = join "-", @$pkg;
 my $path      = join( "/", @$pkg ) . ".pm";
 my $appprefix = Catalyst::Utils::appprefix($module);
 
-copy_templates_to_dist("./templates/default/", $dist, {
+copy_templates_to_dist($template, $dist, {
 	rule => {
 		MyApp => $module,
 		myapp => $appprefix,
