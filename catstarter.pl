@@ -105,17 +105,20 @@ sub select_templates {
 	for my $dir ($local, $global) {
 		(-e "$dir") || next;
 
+		my $tmpls = [];
 		for my $f ($dir->children) {
 			next unless $f->is_dir;
 
 			$f = file($f);
 
 			if ($f->basename eq 'default') {
-				push @$templates, file($f);
+				unshift @$tmpls, file($f);
 			} else {
-				push @$templates, file($f);
+				push @$tmpls, file($f);
 			}
 		}
+
+		push @$templates, @$tmpls;
 	}
 
 	for (1..@$templates) {
