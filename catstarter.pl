@@ -92,6 +92,14 @@ sub copy_templates_to_dist {
 			$fh->close;
 		}
 	} );
+
+	my $startup = $dist->file("startup.sh")->absolute;
+	if (-e $startup) {
+		cd $dist, sub {
+			!system "/bin/sh $startup" or die $?;
+		};
+		$startup->remove();
+	}
 }
 
 sub select_templates {
