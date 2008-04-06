@@ -43,17 +43,6 @@ require JSON::XS;
 
 exit unless @ARGV == 1;
 
-#script_rename();
-#sub script_rename {
-#	my $scripts = [ dir("$dist/script")->children ];
-#	foreach my $file (@$scripts) {
-#		my $name =  $file->basename;
-#		$name =~ s/^$appprefix\_//;
-#		my $new  = $file->dir->file($name);
-#		move $file, $new;
-#	}
-#}
-
 sub copy_templates_to_dist {
 	my ($template_dir, $dist, $opts) = @_;
 	my $rule      = $opts->{rule};
@@ -93,7 +82,12 @@ sub copy_templates_to_dist {
 		}
 	} );
 
-	my $startup = $dist->file("startup.sh")->absolute;
+}
+
+sub execute_startup {
+	my ($dist) = @_;
+
+	my $startup = dir($dist)->file("startup.sh")->absolute;
 	if (-e $startup) {
 		cd $dist, sub {
 			!system "/bin/sh $startup" or die $?;
@@ -140,6 +134,7 @@ sub select_templates {
 	$templates->[$selected-1]->cleanup;
 }
 
+
 my $template = select_templates();
 if ($template) {
 	say "Selected $template";
@@ -170,6 +165,21 @@ copy_templates_to_dist($template, $dist, {
 	},
 });
 
+execute_startup($dist);
+
 __END__
 
+=head1 NAME
+
+catstarter.pl - Create Catalyst app skelton.
+
+=head1 SYNOPSIS
+
+  $ catstarter.pl MyApp
+
+=head1 DESCRIPTION
+
+  Execute startup.sh under template root directory after creating target app.
+
+=cut
 
