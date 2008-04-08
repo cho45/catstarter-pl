@@ -6,6 +6,8 @@ use warnings;
 use Pod::Usage;
 use Getopt::Long;
 use Perl6::Say;
+use autobox;
+use autobox::Core;
 
 use ExtUtils::MakeMaker qw(prompt);
 
@@ -114,13 +116,14 @@ sub select_templates {
 			$f = file($f);
 
 			if ($f->basename eq 'default') {
+				# $tmpls->unshift(file($f));
 				unshift @$tmpls, file($f);
 			} else {
-				push @$tmpls, file($f);
+				$tmpls->push(file($f));
 			}
 		}
 
-		push @$templates, @$tmpls;
+		$templates->push(@$tmpls);
 	}
 
 	for (1..@$templates) {
