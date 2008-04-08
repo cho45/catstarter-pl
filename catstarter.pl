@@ -147,10 +147,10 @@ if ($template) {
 }
 
 
-my $module    = shift @ARGV;
-my $pkg       = [ split /::/, $module ];
-my $dist      = join "-", @$pkg;
-my $path      = join( "/", @$pkg ) . ".pm";
+my $module    = [ @ARGV ]->shift;
+my $pkg       = $module->split("::");
+my $dist      = $pkg->join("-");
+my $path      = $pkg->join("/") . ".pm";
 my $appprefix = Catalyst::Utils::appprefix($module);
 
 copy_templates_to_dist($template, $dist, {
