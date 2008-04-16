@@ -39,6 +39,7 @@ myapp_create.pl [options] model|view|controller name [helper] [options]
 
  Examples:
    myapp_create.pl controller My::Controller
+   myapp_create.pl controller My::Controller BindLex
    myapp_create.pl -mechanize controller My::Controller
    myapp_create.pl view My::View
    myapp_create.pl view MyView TT
