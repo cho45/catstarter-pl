@@ -2,3 +2,7 @@
 xgettext.pl templates/default.pl.html
 cp messages.po lib/MyApp/I18N/ja.po
 
+
+xgettext.pl templates/default.pl.html
+msgmerge lib/MyApp/I18N/ja.po messages.po
+
