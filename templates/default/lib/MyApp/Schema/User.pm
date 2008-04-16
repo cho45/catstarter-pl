@@ -38,8 +38,8 @@ __PACKAGE__->add_unique_constraint("uid", ["uid"]);
 
 __PACKAGE__->inflate_column(
 	$_ => {
-		inflate => sub { DateTime::Format::MySQL->parse_datetime(shift)->set_time_zone($XG::Schema::TZ) },
-		deflate => sub { DateTime::Format::MySQL->format_datetime(shift->set_time_zone($XG::Schema::TZ)) },
+		inflate => sub { DateTime::Format::MySQL->parse_datetime(shift)->set_time_zone($MyApp::Schema::TZ) },
+		deflate => sub { DateTime::Format::MySQL->format_datetime(shift->set_time_zone($MyApp::Schema::TZ)) },
 	},
 ) for qw/created_at logged_in_at/;
 
