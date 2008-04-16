@@ -5,7 +5,7 @@ use warnings;
 
 
 sub foo {
-	my ($self, $c) = @_;
+	my ($c) = @_;
 }
 
 
