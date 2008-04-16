@@ -18,12 +18,6 @@ $ENV{DBIC_TRACE} = 1;
 my $c      = MyApp->prepare;
 my $schema = $c->model->result_source->schema;
 
-$schema->create_ddl_dir(
-	[ qw/MySQL/ ],
-	$schema->VERSION,
-	'sql_dir',
-);
-
-$schema->upgrade;
+$schema->create_ddl_dir( [ qw/MySQL/ ], $schema->VERSION, 'sql');
 
 
