@@ -8,9 +8,6 @@ __PACKAGE__->config->{namespace} = '';
 
 sub default : Private {
 	my ( $self, $c ) = @_;
-
-	# Hello World
-	$c->response->body( $c->welcome_message );
 }
 
 sub end : ActionClass('RenderView') {
