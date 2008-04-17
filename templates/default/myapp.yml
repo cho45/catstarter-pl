@@ -18,6 +18,10 @@ View::JSON:
   json_driver: XS
   no_x_json_header: 1
 
+Plugin::I18N:
+  maketext_options:
+    Decode: 0
+
 session:
   expires: 1000000000000 # forever
   storage: __path_to(tmp/session)__
