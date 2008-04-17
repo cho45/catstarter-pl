@@ -28,3 +28,6 @@ session:
   cookie_name: session
   cookie_expires: 2629743 # 1 month
 
+validator:
+  profiles: __path_to(myapp_form.yml)__
+  message_format: <p class="error">%s</p>
