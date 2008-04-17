@@ -3,11 +3,16 @@ package MyApp::Util;
 use strict;
 use warnings;
 
+sub form_message {
+	my ($c, @args) = @_;
+	my $messages = $c->form_messages(@args);
 
-sub foo {
-	my ($c) = @_;
+	if ($messages && ref($messages) eq 'ARRAY') {
+		return $messages->[0];
+	}
+
+	$messages;
 }
-
 
 1;
 __END__
