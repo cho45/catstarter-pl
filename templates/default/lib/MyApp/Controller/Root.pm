@@ -8,6 +8,13 @@ __PACKAGE__->config->{namespace} = '';
 
 sub default : Private {
 	my ( $self, $c ) = @_;
+
+	$c->res->status(404);
+	$c->stash->{template} = 'errors/404.pl.html';
+}
+
+sub index : Private {
+	my ( $self, $c ) = @_;
 }
 
 sub end : ActionClass('RenderView') {
