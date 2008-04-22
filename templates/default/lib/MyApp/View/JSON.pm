@@ -3,27 +3,15 @@ package MyApp::View::JSON;
 use strict;
 use base 'Catalyst::View::JSON';
 
-=head1 NAME
+use JSON::XS ();
 
-MyApp::View::JSON - Catalyst JSON View
+sub new {
+	my $self = shift->NEXT::new(@_);
 
-=head1 SYNOPSIS
+	my $dumper = JSON::XS->new->latin1;
+	$self->json_dumper(sub { $dumper->encode($_[0]) });
 
-See L<MyApp>
-
-=head1 DESCRIPTION
-
-Catalyst JSON View.
-
-=head1 AUTHOR
-
-さとう
-
-=head1 LICENSE
-
-This library is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
+	$self;
+}
 
 1;

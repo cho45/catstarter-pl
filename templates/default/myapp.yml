@@ -14,7 +14,7 @@ Model::DBIC:
         - SET NAMES utf8
 
 View::JSON:
-  expose_stash: 'json'
+  expose_stash: 'api'
   json_driver: XS
   no_x_json_header: 1
 
