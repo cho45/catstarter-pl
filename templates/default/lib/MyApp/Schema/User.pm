@@ -12,6 +12,7 @@ __PACKAGE__->table('users');
 __PACKAGE__->add_columns(
 	id => {
 		data_type => 'INT',
+		is_auto_increment => 1,
 		extra     => {
 			unsigned => 1,
 		},
