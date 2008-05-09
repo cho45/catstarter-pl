@@ -30,4 +30,4 @@ session:
 
 validator:
   profiles: __path_to(myapp_form.yml)__
-  message_format: <p class="error">%s</p>
+  _message_format: <p class="error">%s</p>
