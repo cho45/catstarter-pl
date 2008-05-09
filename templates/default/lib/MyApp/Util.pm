@@ -8,7 +8,12 @@ sub form_message {
 	my $messages = $c->form_messages(@args);
 
 	if ($messages && ref($messages) eq 'ARRAY') {
-		return $messages->[0];
+		my $message = $messages->[0];
+		# for I18N
+		if ($message =~ /^\{\{(.+)\}\}$/) {
+			$message = $c->loc($1);
+		}
+		return sprintf($c->config->{validator}{_message_format} || "%s", $message);
 	}
 
 	$messages;

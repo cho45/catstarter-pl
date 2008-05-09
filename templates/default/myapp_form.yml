@@ -1,10 +1,10 @@
 login:
   email:
     - rule: NOT_BLANK
-      message: Input email address.
+      message: "{{Input email address.}}"
     - rule: EMAIL
-      message: Invalid email address.
+      message: "{{Invalid email address.}}"
   password:
     - rule: NOT_BLANK
-      message: Input password.
+      message: "{{Input password.}}"
 
