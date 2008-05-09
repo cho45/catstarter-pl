@@ -26,11 +26,11 @@ pod2usage(1) unless $helper->mk_component( 'MyApp', @ARGV );
 
 =head1 NAME
 
-myapp_create.pl - Create a new Catalyst Component
+create.pl - Create a new Catalyst Component
 
 =head1 SYNOPSIS
 
-myapp_create.pl [options] model|view|controller name [helper] [options]
+create.pl [options] model|view|controller name [helper] [options]
 
  Options:
    -force        don't create a .new file where a file to be created exists
@@ -38,16 +38,16 @@ myapp_create.pl [options] model|view|controller name [helper] [options]
    -help         display this help and exits
 
  Examples:
-   myapp_create.pl controller My::Controller
-   myapp_create.pl controller My::Controller BindLex
-   myapp_create.pl -mechanize controller My::Controller
-   myapp_create.pl view My::View
-   myapp_create.pl view MyView TT
-   myapp_create.pl view TT TT
-   myapp_create.pl model My::Model
-   myapp_create.pl model SomeDB DBIC::Schema MyApp::Schema create=dynamic\
+   create.pl controller My::Controller
+   create.pl controller My::Controller BindLex
+   create.pl -mechanize controller My::Controller
+   create.pl view My::View
+   create.pl view MyView TT
+   create.pl view TT TT
+   create.pl model My::Model
+   create.pl model SomeDB DBIC::Schema MyApp::Schema create=dynamic\
    dbi:SQLite:/tmp/my.db
-   myapp_create.pl model AnotherDB DBIC::Schema MyApp::Schema create=static\
+   create.pl model AnotherDB DBIC::Schema MyApp::Schema create=static\
    dbi:Pg:dbname=foo root 4321
 
  See also:

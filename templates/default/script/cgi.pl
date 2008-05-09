@@ -14,7 +14,7 @@ MyApp->run;
 
 =head1 NAME
 
-myapp_cgi.pl - Catalyst CGI
+cgi.pl - Catalyst CGI
 
 =head1 SYNOPSIS
 

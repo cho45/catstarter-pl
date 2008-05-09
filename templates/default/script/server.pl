@@ -66,11 +66,11 @@ MyApp->run( $port, $host, {
 
 =head1 NAME
 
-myapp_server.pl - Catalyst Testserver
+server.pl - Catalyst Testserver
 
 =head1 SYNOPSIS
 
-myapp_server.pl [options]
+server.pl [options]
 
  Options:
    -d -debug          force debug mode

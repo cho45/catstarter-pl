@@ -20,18 +20,18 @@ print request($ARGV[0])->content . "\n";
 
 =head1 NAME
 
-myapp_test.pl - Catalyst Test
+test.pl - Catalyst Test
 
 =head1 SYNOPSIS
 
-myapp_test.pl [options] uri
+test.pl [options] uri
 
  Options:
    -help    display this help and exits
 
  Examples:
-   myapp_test.pl http://localhost/some_action
-   myapp_test.pl /some_action
+   test.pl http://localhost/some_action
+   test.pl /some_action
 
  See also:
    perldoc Catalyst::Manual

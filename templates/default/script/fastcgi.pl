@@ -39,12 +39,12 @@ MyApp->run(
 
 =head1 NAME
 
-myapp_fastcgi.pl - Catalyst FastCGI
+fastcgi.pl - Catalyst FastCGI
 
 =head1 SYNOPSIS
 
-myapp_fastcgi.pl [options]
- 
+fastcgi.pl [options]
+
  Options:
    -? -help      display this help and exits
    -l -listen    Socket path to listen on
