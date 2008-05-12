@@ -7,5 +7,5 @@
 
 ## Ref.
 
- * [CodeRepos:lang/perl/misc/catstarter][ http://coderepos.org/share/browser/lang/perl/misc/catstarter ]
+ * [CodeRepos:lang/perl/misc/catstarter]( http://coderepos.org/share/browser/lang/perl/misc/catstarter )
 
