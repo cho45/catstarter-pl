@@ -1,3 +1,6 @@
-<%& "/header.pl.html" %>
-<%= $c->loc("500 Internal Server Error") %>
-<%& "/footer.pl.html" %>
+<%= <<EOS
+<\%& "/header.pl.html" %\>
+<\%= \$c->loc("500 Internal Server Error") %\>
+<\%& "/footer.pl.html" %\>
+EOS
+%>
