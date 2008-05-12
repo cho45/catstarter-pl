@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export JSON_ANY_ORDER=Syck
+
+exec 2>&1
+exec setuidgid admin \
+     softlimit -m 254857600 \
+     /srv/app/<%= $appprefix %>/script/fastcgi.pl -e -l /srv/app/<%= $appprefix %>/tmp/socket -n 8
+
