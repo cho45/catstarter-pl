@@ -19,6 +19,13 @@ sub form_message {
 	$messages;
 }
 
+sub loc {
+	my ($c, $id, @args) = @_;
+	my $ret = $c->localize($id, @args);
+	utf8::decode($ret);
+	$ret;
+}
+
 1;
 __END__
 
