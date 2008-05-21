@@ -18,6 +18,10 @@ __PACKAGE__->add_columns(
 		},
 	},
 
+	nick => {
+		data_type => 'VARCHAR(255)',
+	},
+
 	name => {
 		data_type => 'VARCHAR(255)',
 	},
@@ -35,7 +39,7 @@ __PACKAGE__->add_columns(
 	},
 );
 __PACKAGE__->set_primary_key('id');
-__PACKAGE__->add_unique_constraint("uid", ["uid"]);
+__PACKAGE__->add_unique_constraint("nick", ["nick"]);
 
 __PACKAGE__->inflate_column(
 	$_ => {
