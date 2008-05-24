@@ -22,7 +22,7 @@ sub form_message {
 sub loc {
 	my ($c, $id, @args) = @_;
 	my $ret = $c->localize($id, @args);
-	utf8::decode($ret);
+	utf8::encode($ret);
 	$ret;
 }
 
