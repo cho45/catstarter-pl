@@ -16,7 +16,6 @@ sub _render {
 	my ($self, @args) = @_;
 
 	my $ret = $self->next::method(@args);
-	utf8::decode($ret);
 	$ret;
 }
 
