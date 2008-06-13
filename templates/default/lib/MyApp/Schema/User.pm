@@ -22,7 +22,11 @@ __PACKAGE__->add_columns(
 		data_type => 'VARCHAR(255)',
 	},
 
-	name => {
+	username => {
+		data_type => 'VARCHAR(255)',
+	},
+
+	password => {
 		data_type => 'VARCHAR(255)',
 	},
 
@@ -52,9 +56,20 @@ sub insert {
 	my $self = shift;
 
 	my $now = DateTime->now;
-	$self->created_date($now);
+	$self->created_at($now);
 
 	$self->next::method(@_);
+}
+
+sub auto_create :ResultSet {
+	my ($rs, $id, @rest) = @_;
+
+	my $display_name = $rest[0]->{display}; # OpenID
+
+	$rs->create({
+		nick     => $id,
+		username => $display_name,
+	});
 }
 
 1;

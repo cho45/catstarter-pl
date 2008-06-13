@@ -31,3 +31,14 @@ session:
 validator:
   profiles: __path_to(myapp_form.yml)__
   _message_format: <p class="error">%s</p>
+
+authentication:
+  dbic:
+    user_class: DBIC::User
+    user_field: username
+    password_field: password
+    password_type: hashed
+    password_hash_type: SHA1
+    password_pre_salt: foobar
+    password_post_salt: jkjk
+
