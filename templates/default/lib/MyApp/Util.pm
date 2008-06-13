@@ -25,6 +25,19 @@ sub loc {
 	$ret;
 }
 
+sub finalize {
+	my $c = shift;
+	return $c->NEXT::finalize(@_) if defined $c->stash->{fillform} and !$c->stash->{fillform};
+
+	my $fillform = $c->form->has_error ? $c->req->params : $c->stash->{fillform};
+
+	if ( $c->isa('Catalyst::Plugin::FormValidator') ) {
+		$c->fillform($fillform) if $c->form->has_missing || $c->form->has_invalid || $c->stash->{fillform};
+	}
+
+	return $c->NEXT::finalize(@_);
+}
+
 1;
 __END__
 
