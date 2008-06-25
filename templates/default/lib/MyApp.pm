@@ -12,10 +12,6 @@ use Catalyst qw/
 	Session::State::Cookie
 	Session::Store::FastMmap
 
-	Authentication
-	Authentication::Credential::Password
-	Authentication::Credential::OpenID
-
 	FormValidator::Simple
 	FormValidator::Simple::Auto
 	FillInForm

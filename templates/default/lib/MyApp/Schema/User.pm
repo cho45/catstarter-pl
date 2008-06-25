@@ -44,6 +44,7 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint("nick", ["nick"]);
+__PACKAGE__->has_many(external_ids => 'MyApp::Schema::ExternalID', 'user');
 
 __PACKAGE__->inflate_column(
 	$_ => {
@@ -59,17 +60,6 @@ sub insert {
 	$self->created_at($now);
 
 	$self->next::method(@_);
-}
-
-sub auto_create :ResultSet {
-	my ($rs, $id, @rest) = @_;
-
-	my $display_name = $rest[0]->{display}; # OpenID
-
-	$rs->create({
-		nick     => $id,
-		username => $display_name,
-	});
 }
 
 1;

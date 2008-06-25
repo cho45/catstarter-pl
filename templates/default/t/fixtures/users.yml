@@ -1,0 +1,11 @@
+---
+DBIC::User:
+  - id: 1
+    potential: 100
+    datetime: 2008-03-03 01:00:00
+  - id: 2
+    potential: 101
+    datetime: 2008-03-03 01:00:01
+  - id: 3
+    potential: 101
+    datetime: 2008-03-03 01:00:02

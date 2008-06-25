@@ -1,34 +1,34 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
 
 use lib "lib";
 
-use MyApp;
+use PlantAPIServer;
 
-use YAML::XS;
+use YAML::XS qw/LoadFile/;
+use Path::Class;
+use Hash::Merge;
+
 use Data::Dumper;
-
 sub p ($) { print Dumper shift };
 
-my $c = MyApp->prepare;
+my $c = PlantAPIServer->prepare;
 
-my $fixture = Load( do { local $/; <DATA> } );
+my $fixture = {};
 
-foreach my $key (keys %{$fixture}) {
-    $c->model($key)->delete;
-    foreach my $data (@{ $fixture->{$key} }) {
-        my $f = $c->model($key)->find_or_create($data);
-        $f->set_columns($data);
-        $f->insert_or_update();
-    };
+for my $file (dir(qw/t fixtures/)->children) {
+	$fixture = Hash::Merge::merge($fixture, LoadFile($file));
 }
 
-__END__
----
-DBIC::Address:
-  - id: 1
-    uid: uniqueid
-    url: http://google.com/
-    created_at: 2008-03-03 01:00:00
+foreach my $key (keys %{$fixture}) {
+	$c->model($key)->delete;
+	foreach my $data (@{ $fixture->{$key} }) {
+		my $f = $c->model($key)->find_or_create($data);
+		$f->set_columns($data);
+		$f->insert_or_update();
+	};
+}
+
+1;
