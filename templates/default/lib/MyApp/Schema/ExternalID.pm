@@ -1,4 +1,4 @@
-package MyApp::Schema::User;
+package MyApp::Schema::ExternalID;
 
 use strict;
 use warnings;
@@ -23,11 +23,11 @@ __PACKAGE__->add_columns(
 		extra     => {
 			unsigned => 1,
 		},
-	}
+	},
 
 	provider => {
 		data_type => 'VARCHAR(255)',
-	}
+	},
 
 	name => {
 		data_type => 'VARCHAR(255)',
