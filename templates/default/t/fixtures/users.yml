@@ -1,5 +1,5 @@
 ---
-DBIC::User:
+User:
   - id: 1
     potential: 100
     datetime: 2008-03-03 01:00:00
